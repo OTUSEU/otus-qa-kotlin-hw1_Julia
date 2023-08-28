@@ -23,13 +23,13 @@ class RunTest: TestRunner {
             it.name.contains("after")
         }
 
+        steps.apply {
+            test()
+        }
+
         afterStep.reversed().forEach { step -> step.call(steps).apply {
                 logger.info("${step.name}() GO")
             }
-        }
-
-        steps.apply {
-            test()
         }
 
     }
